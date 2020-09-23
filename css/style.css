@@ -1,0 +1,143 @@
+/* Variables */
+
+:root {
+  --basic-white: #ffffff;
+  --basic-white-transparent: rgba(255, 255, 255, 0.9);
+
+  --basic-blue: #81B3D3;
+  --basic-blue-light: #81B3D2;
+  --basic-blue-hover: #669EC0;
+  --basic-blue-active: #5496BD;
+
+  --basic-grey-light: #EEEEEE;
+  --basic-grey-dark: #F2F2F2;
+
+  --basic-black: #000000;
+  --basic-black-light: #333333;
+
+  --basic-brown: #766357;
+
+  --basic-form: rgba(0, 1, 1, 0.15);
+  --basic-box-shadow: rgba(0, 1, 1, 0.2);
+}
+ /* Global */
+
+ body {
+  min-width: 1200px;
+  margin: 0 40px;
+  font-family: 'PT Sans', Arial, Verdana, Tahoma, sans-serif;/*проверить шрифт*/
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--basic-black);
+  text-transform: uppercase;
+  background-color: var(--basic-grey-light);
+  box-shadow: 0px 5px 15px var(--basic-box-shadow);
+  text-align: center;
+ }
+
+.page a {
+  text-decoration: none;/*????*/
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Main navigation */
+
+.main-header,
+.about-sedona,
+.recommendations {
+  background-color: var(--basic-white);/*здесь нет modal, как правильнее???*/
+}
+
+.site-nav,
+.recommendations-list,
+.advantages-list,
+.footer-social {
+  list-style: none;
+}
+
+.site-nav a {
+  font-weight: bold;
+  line-height: 26px;
+  color: inherit;
+}
+
+.site-nav a:hover,
+.site-nav a:focus {
+  color: var(--basic-blue-light);
+}
+
+.site-nav a:active {
+  color: var(--basic-black);
+  opacity: 0.3;
+}
+
+/* About sedona */
+
+.about-sedona p {
+  color: var(--basic-black-light);
+}
+
+/* Advantages and recommendations */
+
+.advantage {
+  color: var(--basic-white);
+  background-color: var(--basic-blue-light);
+}
+
+.advantages p
+.recommendations p {
+  color: var(--basic-black-light);
+}
+
+/* Modal-search */
+
+.modal {
+  background-color: var(--basic-white);
+}
+
+.modal-content {
+  color: var(--basic-black-light);
+}
+
+.modal-content span {
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 24px;
+  color: var(--basic-black);
+}
+
+/* Footer */
+
+.page-footer {
+  background-color: var(--basic-white-transparent);
+}
+
+.contacts-content {
+  font-weight: bold;
+  font-size: 21px;
+  line-height: 26px;
+}
+
+.footer-social a {
+  background-color: var(--basic-blue-light);
+  color: inherit;
+}
+
+.footer-social a:hover,
+.footer-social a:focus {
+  background-color: var(--basic-blue-hover);
+}
+
+.footer-social a:active {
+  background-color: var(--basic-blue-active);
+}
+
+.contacts-phone {
+  color: var(--basic-black);
+}
+
+
