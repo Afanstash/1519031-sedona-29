@@ -20,23 +20,29 @@
   --basic-form: rgba(0, 1, 1, 0.15);
   --basic-box-shadow: rgba(0, 1, 1, 0.2);
 }
+
+html {
+  box-sizing: border-box;/*посмотрела видео на YouTube типа это модно. Так(чем твой вариант)?*/
+}
+
+*, *:after, *:before {
+  box-sizing: inherit;/*можно так?*/
+}
+
  /* Global */
 
  body {
-  min-width: 1200px;
-  margin: 0 40px;
-  font-family: 'PT Sans', Arial, Verdana, Tahoma, sans-serif;/*проверить шрифт*/
+  padding: 0;
+  font-family: 'PT Sans', Arial, sans-serif;/*проверить шрифт*/
   font-size: 14px;
   line-height: 21px;
+  font-weight: 400;
   color: var(--basic-black);
   text-transform: uppercase;
-  background-color: var(--basic-grey-light);
-  box-shadow: 0px 5px 15px var(--basic-box-shadow);
-  text-align: center;
  }
 
 .page a {
-  text-decoration: none;/*???*/
+  text-decoration: none;/*нужно так делать или иначе?*/
 }
 
 img {
@@ -44,12 +50,47 @@ img {
   height: auto;
 }
 
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: var(--basic-white);/*почему не в body?*/
+  box-shadow: 0px 5px 15px var(--basic-box-shadow);
+ }
+
+/*headlines and text-content*/
+
+.title {
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.text {
+  color: var(--basic-black-light);
+}
+
+/*Visually-hidden*/
+
+.hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);/*разобрать, как работает?*/
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
 /* Main navigation */
 
-.main-header,
-.about-sedona,
-.recommendations {
-  background-color: var(--basic-white);/*здесь нет modal, как правильнее???*/
+.main-nav {
+  position: relative;
+  height: 56px;
+}
+
+.main-header-logo {
+  width: 138px;
+  height: 70px;
+  position: absolute;
+  top: 0;
+  left: 531px;
 }
 
 .site-nav,
@@ -59,9 +100,13 @@ img {
   list-style: none;
 }
 
+.site-nav {
+  padding: 0 72px;
+  margin: 0;
+  display: flex;
+}
+
 .site-nav a {
-  font-weight: bold;
-  line-height: 26px;
   color: inherit;
 }
 
@@ -71,57 +116,200 @@ img {
 }
 
 .site-nav a:active {
-  color: var(--basic-black);
   opacity: 0.3;
 }
 
-/* About sedona */
-
-.about-sedona p {
-  color: var(--basic-black-light);
+.nav-item {
+  margin-top: 15px;
+  line-height: 26px;
+  font-weight: 700;/*опред-ся здесь или в ".site-nav a"?*/
 }
 
-/* Advantages and recommendations */
+.nav-item:nth-child(2) {
+  margin-right: auto;
+}
+
+.nav-item:nth-child(3) {
+  margin-left: auto;
+}
+
+/* The end for Main navigation */
+
+/* Welcome to Sedona*/
+
+.welcome {
+  height: 509px;
+  padding-top: 77.35px;
+  background-image: linear-gradient(to right bottom, white, #81B3D2, #766357);/*убрать*/
+  outline: 1px solid black;/*убрать*/
+  text-align: center;/*так можно?*/
+}
+
+.welcome-img {
+  width: 457px;
+  height: 351px;
+  margin: 0;/*обязательно задавать?*/
+  padding: 0;/*обязательно задавать?*/
+}
+
+/* About-sedona*/
+.about-sedona {
+  text-align: center;/*так можно?*/
+}
+
+.sedona-title {
+  margin: 0 auto;
+  margin-top: 42.5px;
+  width: 470px;
+  height: 80px;
+  line-height: 26px;
+}
+
+.sedona-content {
+  margin-top: 16.5px;
+  margin-bottom: 51px;/*как быть с этим?*/
+  line-height: 26px;
+}
+
+/* Advantages*/
 
 .advantage {
   color: var(--basic-white);
   background-color: var(--basic-blue-light);
+  height: 256px;
 }
 
-.advantages p
-.recommendations p {
-  color: var(--basic-black-light);
+.advantage-one,
+.advantage-two {
+  width: 400px;
+  height: 256px;
+  outline: 1px solid black;/*убрать*/
 }
 
-/* Modal-search */
+.advantage-one {
+  float: left;
+}
 
+.advantage-two {
+  float: right;
+}
+
+.recommendations-list {
+  height: 330px;
+  margin: 0;
+  padding: 0;
+  padding-top: 55px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recommendations-item {
+  width: 33.3%;
+}
+
+.advantages-list {
+  height: 256px;
+  background-color: var(--basic-grey-light);
+  margin: 0;
+  padding: 47px 77px 54px 96px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.advantages-item {
+  height: 43px;
+  width: 33.3%;
+}
+
+/* Modal */
 .modal {
-  background-color: var(--basic-white);
+  height: 291px;
+  text-align: center;/*так можно?*/
+  position: relative;
+  padding-top: 58px;
+  outline: 1px solid black;/*убрать*/
+}
+
+.modal-title {
+  margin: 0;
+  margin-bottom: 30px;/*так ли это?*/
+  font-size: 30px;
+  line-height: 30px;/*так ли это?*/
 }
 
 .modal-content {
-  color: var(--basic-black-light);
+  line-height: 24px;
 }
 
-.modal-content span {
-  font-weight: bold;
-  font-size: 30px;
-  line-height: 24px;
-  color: var(--basic-black);
+.button-modal {
+  margin: 0;
+  padding: 0;
+  width: 568px;
+  height: 86px;
+  font-size: 21px;
+  line-height: 26px;
+  font-weight: 700;
+  text-align: center;/*нужно здесь?*/
+  text-transform: inherit;
+  position: absolute;
+  bottom: 0px;
+  left: 315px;
+}
+
+/* Map and form */
+
+.map {
+  position: relative;
+  height: 473px;
+  outline: 1px solid black;/*убрать*/
+}
+
+.form-search {
+  position: absolute;
+  top: 0;
+  left: 315px;
+  width: 568px;
+  height: 395px;
+  outline: 1px solid black;/*убрать*/
 }
 
 /* Footer */
 
 .page-footer {
-  background-color: var(--basic-white-transparent);
-}
-
-.contacts-content {
-  font-weight: bold;
-  font-size: 21px;
   line-height: 26px;
+  text-align: center;/*можно ли эти два свойства задать для всего футера или так лучше не делать?*/
+  height: 120px;
+  padding-top: 36px;
+  background-color: var(--basic-white-transparent);
+  outline: 1px solid black;/*убрать*/
 }
 
+.footer-contacts {
+  width: 251px;
+  float: left;
+}
+
+.footer-social {
+  margin: 0 auto;
+  width: 150px;
+  height: 48px;/*обязательно задавать?*/
+  padding: 0px;
+  outline: 1px solid black;/*убрать*/
+}
+
+.social-item {
+  float: left;
+  width: 46px;
+  height: 48px;
+  margin-right: 6px;
+  outline: 1px solid black;/*убрать*/
+}
+
+.social-item:last-child {
+  margin-right: -6px;
+}
+
+/*
 .footer-social a {
   background-color: var(--basic-blue-light);
   color: inherit;
@@ -135,9 +323,16 @@ img {
 .footer-social a:active {
   background-color: var(--basic-blue-active);
 }
+*/
+.footer-copyright {
+  margin: 0;
+  margin-right: 139px;
+  width: 200px;
+}
 
-.contacts-phone {
-  color: var(--basic-black);
+.contacts-phone,
+.copyright-link {
+  color: inherit;
 }
 
 
