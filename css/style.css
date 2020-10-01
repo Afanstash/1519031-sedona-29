@@ -21,12 +21,12 @@
   --basic-box-shadow: rgba(0, 1, 1, 0.2);
 }
 
-html {
-  box-sizing: border-box;/*посмотрела видео на YouTube типа это модно. Так(чем твой вариант)?*/
+* {
+  box-sizing: border-box;
 }
 
 *, *:after, *:before {
-  box-sizing: inherit;/*можно так?*/
+  box-sizing: border-box;
 }
 
  /* Global */
@@ -41,8 +41,8 @@ html {
   text-transform: uppercase;
  }
 
-.page a {
-  text-decoration: none;/*нужно так делать или иначе?*/
+a {
+  text-decoration: none;
 }
 
 img {
@@ -53,9 +53,23 @@ img {
 .container {
   width: 1200px;
   margin: 0 auto;
-  background-color: var(--basic-white);/*почему не в body?*/
+  background-color: var(--basic-white);
   box-shadow: 0px 5px 15px var(--basic-box-shadow);
  }
+
+/* Grid */
+
+.page-body {
+  height: 100%;/*почему то он у меня не страбатывает и footer не прижимается. Нужно понять почему?  Это правильно, так и оставить? я удалила в отладчике и без этого свойства всё отлично работает*/
+}
+
+.container-grid {
+  /*min-height: 100%; из-за этого не работало, почему?*/
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr min-content;
+  align-content: start;
+}
 
 /*headlines and text-content*/
 
@@ -72,7 +86,7 @@ img {
 
 .hidden {
   position: absolute;
-  clip: rect(0 0 0 0);/*разобрать, как работает?*/
+  clip: rect(0 0 0 0);/*посмотреть примеры*/
   width: 1px;
   height: 1px;
   margin: -1px;
@@ -89,6 +103,7 @@ img {
   width: 138px;
   height: 70px;
   position: absolute;
+  z-index: 1;/*какое значение лучше поставить?*/
   top: 0;
   left: 531px;
 }
@@ -101,9 +116,9 @@ img {
 }
 
 .site-nav {
-  padding: 0 72px;
+  padding: 15px 72px;
   margin: 0;
-  display: flex;
+  /*display: flex;/*flex*/
 }
 
 .site-nav a {
@@ -120,17 +135,22 @@ img {
 }
 
 .nav-item {
-  margin-top: 15px;
   line-height: 26px;
-  font-weight: 700;/*опред-ся здесь или в ".site-nav a"?*/
+  font-weight: 700;
+  text-align: center;
 }
-
+/*
 .nav-item:nth-child(2) {
   margin-right: auto;
 }
 
 .nav-item:nth-child(3) {
   margin-left: auto;
+}
+*/
+.nav-grid {/*слишком много заморочек, grid-area не могу использовать*/
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 /* The end for Main navigation */
@@ -142,32 +162,37 @@ img {
   padding-top: 77.35px;
   background-image: linear-gradient(to right bottom, white, #81B3D2, #766357);/*убрать*/
   outline: 1px solid black;/*убрать*/
-  text-align: center;/*так можно?*/
+  text-align: center;
+  position: relative;
 }
 
 .welcome-img {
-  width: 457px;
+  width: 457px;/*width, height зачем мы их здесь дублируем?*/
   height: 351px;
-  margin: 0;/*обязательно задавать?*/
-  padding: 0;/*обязательно задавать?*/
+}
+
+.welcome-shape {/*width, height задавать параметры?*/
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 /* About-sedona*/
+
 .about-sedona {
-  text-align: center;/*так можно?*/
+  padding-top: 42.5px;
+  text-align: center;
 }
 
 .sedona-title {
-  margin: 0 auto;
-  margin-top: 42.5px;
-  width: 470px;
-  height: 80px;
+  margin: 0;
+  margin-bottom: 16.5px;
   line-height: 26px;
 }
 
 .sedona-content {
-  margin-top: 16.5px;
-  margin-bottom: 51px;/*как быть с этим?*/
+  margin: 0;
+  margin-bottom: 51px;
   line-height: 26px;
 }
 
@@ -176,49 +201,51 @@ img {
 .advantage {
   color: var(--basic-white);
   background-color: var(--basic-blue-light);
-  height: 256px;
 }
 
-.advantage-one,
-.advantage-two {
-  width: 400px;
-  height: 256px;
-  outline: 1px solid black;/*убрать*/
+ .advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 256px;/*как понять, где фикс, а где нет, возможность переполнения, тогда что с картинкой делать?*/
 }
 
 .advantage-one {
-  float: left;
+  grid-column: 1/2;
+}
+
+.advantage-oneimg {/*меня смущает название класса, как лучше?*/
+  grid-column: 2/-1;
 }
 
 .advantage-two {
-  float: right;
+  grid-column: 3/4;
 }
 
-.recommendations-list {
-  height: 330px;
-  margin: 0;
-  padding: 0;
-  padding-top: 55px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.recommendations-item {
-  width: 33.3%;
+.advantage-twoimg {
+  grid-column: 1/3;
 }
 
 .advantages-list {
-  height: 256px;
-  background-color: var(--basic-grey-light);
   margin: 0;
-  padding: 47px 77px 54px 96px;
-  display: flex;
-  flex-wrap: wrap;
+  padding: 0;
+  background-color: var(--basic-grey-light);
 }
 
-.advantages-item {
-  height: 43px;
-  width: 33.3%;
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  min-height: 330px;
+}
+
+.recommendations-list {
+  margin: 0;
+  padding: 0;
+  padding-top: 55px;
+}
+
+.recommendations-item {
+  padding: 55px 73px 81px 73px;
 }
 
 /* Modal */
@@ -230,15 +257,15 @@ img {
   outline: 1px solid black;/*убрать*/
 }
 
-.modal-title {
+.modal-title {/*очень сомнительный кусок*/
   margin: 0;
-  margin-bottom: 30px;/*так ли это?*/
+  margin-bottom: 35px;/*так ли это?*/
   font-size: 30px;
-  line-height: 30px;/*так ли это?*/
+  line-height: 24px;/*может убрать в ".modal"?*/
 }
 
 .modal-content {
-  line-height: 24px;
+  line-height: 24px;/*может убрать в ".modal"?*/
 }
 
 .button-modal {
@@ -249,7 +276,7 @@ img {
   font-size: 21px;
   line-height: 26px;
   font-weight: 700;
-  text-align: center;/*нужно здесь?*/
+  text-align: center;
   text-transform: inherit;
   position: absolute;
   bottom: 0px;
@@ -277,8 +304,7 @@ img {
 
 .page-footer {
   line-height: 26px;
-  text-align: center;/*можно ли эти два свойства задать для всего футера или так лучше не делать?*/
-  height: 120px;
+  text-align: center;
   padding-top: 36px;
   background-color: var(--basic-white-transparent);
   outline: 1px solid black;/*убрать*/
@@ -292,7 +318,6 @@ img {
 .footer-social {
   margin: 0 auto;
   width: 150px;
-  height: 48px;/*обязательно задавать?*/
   padding: 0px;
   outline: 1px solid black;/*убрать*/
 }
