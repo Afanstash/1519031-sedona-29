@@ -14,6 +14,7 @@
 
   --basic-black: #000000;
   --basic-black-light: #333333;
+  --basic-black-rating: #666666;
 
   --basic-brown: #766357;
 
@@ -54,6 +55,7 @@ img {
  }
 
 /* Grid */
+
 /*
 .page-body {
   height: 100%;почему то он у меня не страбатывает и footer не прижимается. Нужно понять почему?  Это правильно, так и оставить? я удалила в отладчике и без этого свойства всё отлично работает
@@ -96,10 +98,34 @@ img {
   object-fit: cover;
 }
 
+.grid-col-6 {/*числа в названиях классов можно же использовать?*/
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto;
+  min-height: min-content;/*как понять, где фикс, а где нет, возможность переполнения, тогда что с картинкой делать?*/
+}
+
+.results-sort,
+.inn-item img {
+  grid-column: 1/2;
+}
+
+.results-sort,
+.inn-content {
+  grid-column: 2/6;
+}
+
+.results-nav,
+.inn-star {
+  grid-column: 6/-1;
+}
+
+
 /*headlines and text-content*/
 
 .title {
   font-size: 21px;
+  line-height: 26px;
   font-weight: 700;
 }
 
@@ -117,6 +143,18 @@ img {
   margin: -1px;
 }
 
+/* list with out bullitts*/
+
+.site-nav,
+.recommendations-list,
+.advantages-list,
+.footer-social,
+.sort-list,
+.inn-list {
+  list-style: none;
+}
+
+
 /* Main navigation */
 
 .main-nav {
@@ -131,13 +169,6 @@ img {
   z-index: 1;/*какое значение лучше поставить?*/
   top: 0;
   left: 531px;
-}
-
-.site-nav,
-.recommendations-list,
-.advantages-list,
-.footer-social {
-  list-style: none;
 }
 
 .site-nav {
@@ -173,6 +204,7 @@ img {
 }
 
 .nav-item a:active {
+  color: var(--basic-black);
   opacity: 0.3;
 }
 /* The end for Main navigation */
@@ -209,7 +241,6 @@ img {
 .sedona-title {
   margin: 0;/*Нужно для каждого заголовка и текста убирать, или можно в классах ".text" и ".title" прописать? как правильнее или как удобнее на практике?*/
   margin-bottom: 16.5px;
-  line-height: 26px;
 }
 
 .sedona-content {
@@ -295,13 +326,15 @@ img {
 /* Footer */
 
 .page-footer {
-  margin-top: -120px;/*если высота footer стане больше? в любом случае он же не должен на карту выше подниматься. значит всё ок)*/
   min-height: 120px;
-  line-height: 26px;
   text-align: center;
   background-color: var(--basic-white-footer);/*может лучше цвет белый и св-во opacity, чтоб не плодить цвета? Почему у меня при поднятии футера на карту, он окрашивается в ее цвет?*/
-  z-index: 1;
   outline: 1px solid black;/*убрать*/
+}
+
+.main-footer {
+  margin-top: -120px;/*если высота footer стане больше? в любом случае он же не должен на карту выше подниматься. значит всё ок)*/
+  z-index: 1;
 }
 
 .footer-social {
@@ -350,3 +383,62 @@ img {
   margin: 0;
 }
 
+/* Catalog.html */
+/* Filter */
+
+.filter {
+  min-height: 217px;
+  outline: 1px solid black;/*убрать*/
+}
+
+/* Results */
+
+.sort-text {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.sort-list {
+  margin: 0;
+  padding: 0;
+}
+
+.sort-item a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.sort-item-active a {
+  text-decoration: none;
+}
+
+.button-up,
+.button-down {
+  color: inherit;
+}
+
+/* List-inn */
+
+.inn-list {
+  margin: 0;
+  padding: 0;
+}
+
+.button-more,
+.button-booking {
+  color: var(--basic-white);
+}
+
+.button-more {
+  background-color: var(--basic-blue-light);
+}
+
+.button-booking {
+  background-color: var(--basic-brown);
+}
+
+.inn-rating {
+  color: var(--basic-black-rating);
+  background-color: var(--basic-grey-dark);
+}
