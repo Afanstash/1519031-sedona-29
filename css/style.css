@@ -2,7 +2,7 @@
 
 :root {
   --basic-white: #ffffff;
-  --basic-white-transparent: rgba(255, 255, 255, 0.9);
+  --basic-white-footer: rgba(255, 255, 255, 0.9);
 
   --basic-blue: #81B3D3;
   --basic-blue-light: #81B3D2;
@@ -21,10 +21,6 @@
   --basic-box-shadow: rgba(0, 1, 1, 0.2);
 }
 
-* {
-  box-sizing: border-box;
-}
-
 *, *:after, *:before {
   box-sizing: border-box;
 }
@@ -33,7 +29,7 @@
 
  body {
   padding: 0;
-  font-family: 'PT Sans', Arial, sans-serif;/*проверить шрифт*/
+  font-family: 'PT Sans', Arial, sans-serif;
   font-size: 14px;
   line-height: 21px;
   font-weight: 400;
@@ -58,10 +54,10 @@ img {
  }
 
 /* Grid */
-
+/*
 .page-body {
-  height: 100%;/*почему то он у меня не страбатывает и footer не прижимается. Нужно понять почему?  Это правильно, так и оставить? я удалила в отладчике и без этого свойства всё отлично работает*/
-}
+  height: 100%;почему то он у меня не страбатывает и footer не прижимается. Нужно понять почему?  Это правильно, так и оставить? я удалила в отладчике и без этого свойства всё отлично работает
+}*/
 
 .container-grid {
   /*min-height: 100%; из-за этого не работало, почему?*/
@@ -69,6 +65,35 @@ img {
   display: grid;
   grid-template-rows: min-content 1fr min-content;
   align-content: start;
+}
+
+.grid-col-3 {/*числа в названиях классов можно же использовать?*/
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  min-height: 256px;/*как понять, где фикс, а где нет, возможность переполнения, тогда что с картинкой делать?*/
+}
+
+.advantage-one {
+  grid-column: 1/2;
+}
+
+.advantage-one-img {
+  grid-column: 2/-1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.advantage-two {
+  grid-column: 3/4;
+}
+
+.advantage-two-img {
+  grid-column: 1/3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /*headlines and text-content*/
@@ -118,20 +143,7 @@ img {
 .site-nav {
   padding: 15px 72px;
   margin: 0;
-  /*display: flex;/*flex*/
-}
-
-.site-nav a {
-  color: inherit;
-}
-
-.site-nav a:hover,
-.site-nav a:focus {
-  color: var(--basic-blue-light);
-}
-
-.site-nav a:active {
-  opacity: 0.3;
+  display: flex;
 }
 
 .nav-item {
@@ -139,7 +151,7 @@ img {
   font-weight: 700;
   text-align: center;
 }
-/*
+
 .nav-item:nth-child(2) {
   margin-right: auto;
 }
@@ -147,12 +159,22 @@ img {
 .nav-item:nth-child(3) {
   margin-left: auto;
 }
-*/
-.nav-grid {/*слишком много заморочек, grid-area не могу использовать*/
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+.nav-item a {
+  color: inherit;
 }
 
+.nav-item-active a {
+  color: var(--basic-brown);
+}
+.nav-item a:hover,
+.nav-item a:focus {
+  color: var(--basic-blue-light);
+}
+
+.nav-item a:active {
+  opacity: 0.3;
+}
 /* The end for Main navigation */
 
 /* Welcome to Sedona*/
@@ -185,7 +207,7 @@ img {
 }
 
 .sedona-title {
-  margin: 0;
+  margin: 0;/*Нужно для каждого заголовка и текста убирать, или можно в классах ".text" и ".title" прописать? как правильнее или как удобнее на практике?*/
   margin-bottom: 16.5px;
   line-height: 26px;
 }
@@ -203,39 +225,10 @@ img {
   background-color: var(--basic-blue-light);
 }
 
- .advantages-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  height: 256px;/*как понять, где фикс, а где нет, возможность переполнения, тогда что с картинкой делать?*/
-}
-
-.advantage-one {
-  grid-column: 1/2;
-}
-
-.advantage-oneimg {/*меня смущает название класса, как лучше?*/
-  grid-column: 2/-1;
-}
-
-.advantage-two {
-  grid-column: 3/4;
-}
-
-.advantage-twoimg {
-  grid-column: 1/3;
-}
-
 .advantages-list {
   margin: 0;
   padding: 0;
   background-color: var(--basic-grey-light);
-}
-
-.recommendations-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  min-height: 330px;
 }
 
 .recommendations-list {
@@ -245,27 +238,28 @@ img {
 }
 
 .recommendations-item {
-  padding: 55px 73px 81px 73px;
+  padding-right: 73px;
+  padding-left: 73px;
 }
 
 /* Modal */
 .modal {
-  height: 291px;
-  text-align: center;/*так можно?*/
-  position: relative;
+  min-height: 291px;/*думаю, что высоту можно убрать, чтоб кнопка всегда располагалась внизу блока независимо от количества текста*/
+  text-align: center;
+  line-height: 24px;
   padding-top: 58px;
   outline: 1px solid black;/*убрать*/
 }
 
-.modal-title {/*очень сомнительный кусок*/
+.modal-title {
   margin: 0;
-  margin-bottom: 35px;/*так ли это?*/
+  margin-bottom: 35px;
   font-size: 30px;
-  line-height: 24px;/*может убрать в ".modal"?*/
 }
 
 .modal-content {
-  line-height: 24px;/*может убрать в ".modal"?*/
+  margin: 0;
+  margin-bottom: 50px;
 }
 
 .button-modal {
@@ -278,21 +272,19 @@ img {
   font-weight: 700;
   text-align: center;
   text-transform: inherit;
-  position: absolute;
-  bottom: 0px;
-  left: 315px;
 }
 
 /* Map and form */
 
 .map {
   position: relative;
-  height: 473px;
+  height: 593px;/* как понять, нужно ли здесь задавать мах или мин значение?*/
   outline: 1px solid black;/*убрать*/
+  background-color: tomato;/*убрать*/
 }
 
 .form-search {
-  position: absolute;
+  position: absolute;/*форму же нужно позиционировать, верно?*/
   top: 0;
   left: 315px;
   width: 568px;
@@ -303,27 +295,23 @@ img {
 /* Footer */
 
 .page-footer {
+  margin-top: -120px;/*если высота footer стане больше? в любом случае он же не должен на карту выше подниматься. значит всё ок)*/
+  min-height: 120px;
   line-height: 26px;
   text-align: center;
-  padding-top: 36px;
-  background-color: var(--basic-white-transparent);
+  background-color: var(--basic-white-footer);/*может лучше цвет белый и св-во opacity, чтоб не плодить цвета? Почему у меня при поднятии футера на карту, он окрашивается в ее цвет?*/
+  z-index: 1;
   outline: 1px solid black;/*убрать*/
 }
 
-.footer-contacts {
-  width: 251px;
-  float: left;
-}
-
 .footer-social {
-  margin: 0 auto;
-  width: 150px;
+  margin: 0;
   padding: 0px;
   outline: 1px solid black;/*убрать*/
 }
 
 .social-item {
-  float: left;
+  float: left;/*пока так*/
   width: 46px;
   height: 48px;
   margin-right: 6px;
@@ -349,15 +337,16 @@ img {
   background-color: var(--basic-blue-active);
 }
 */
-.footer-copyright {
-  margin: 0;
-  margin-right: 139px;
-  width: 200px;
-}
 
+.contacts-content{
+  margin: 0;
+}
 .contacts-phone,
 .copyright-link {
   color: inherit;
 }
 
+.footer-copyright {
+  margin: 0;
+}
 
