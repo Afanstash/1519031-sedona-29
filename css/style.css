@@ -29,13 +29,14 @@
  /* Global */
 
  body {
-  padding: 0;
+  padding: 0 40px;
   font-family: 'PT Sans', Arial, sans-serif;
   font-size: 14px;
   line-height: 21px;
   font-weight: 400;
   color: var(--basic-black);
   text-transform: uppercase;
+  background-color: var(--basic-grey-dark);
  }
 
 a {
@@ -275,11 +276,9 @@ img {
 
 /* Modal */
 .modal {
-  min-height: 291px;/*думаю, что высоту можно убрать, чтоб кнопка всегда располагалась внизу блока независимо от количества текста*/
   text-align: center;
   line-height: 24px;
   padding-top: 58px;
-  outline: 1px solid black;/*убрать*/
 }
 
 .modal-title {
@@ -311,7 +310,6 @@ img {
   position: relative;
   height: 593px;/* как понять, нужно ли здесь задавать мах или мин значение?*/
   outline: 1px solid black;/*убрать*/
-  background-color: tomato;/*убрать*/
 }
 
 .form-search {
@@ -320,7 +318,8 @@ img {
   left: 315px;
   width: 568px;
   height: 395px;
-  outline: 1px solid black;/*убрать*/
+  background-color: var(--basic-white);
+  box-shadow: 0px 7px 15px var(--basic-form);
 }
 
 /* Footer */
@@ -348,11 +347,11 @@ img {
   width: 46px;
   height: 48px;
   margin-right: 6px;
-  outline: 1px solid black;/*убрать*/
+  background-color: var(--basic-blue-light);
 }
 
 .social-item:last-child {
-  margin-right: -6px;
+  margin-right: 0;
 }
 
 /*
@@ -388,7 +387,8 @@ img {
 
 .filter {
   min-height: 217px;
-  outline: 1px solid black;/*убрать*/
+  background-image: linear-gradient(to right bottom, #81B3D2, #766357);/*убрать*/
+  opacity: 0.8;/*убрать*/
 }
 
 /* Results */
@@ -423,6 +423,10 @@ img {
 .inn-list {
   margin: 0;
   padding: 0;
+}
+
+.inn-content .inn-link {
+  color: var(--basic-black);
 }
 
 .button-more,
