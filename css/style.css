@@ -1,3 +1,26 @@
+/* Fonts */
+
+/* pt-sans-regular - latin_cyrillic */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans'), local('PTSans-Regular'),
+       url('../fonts/ptsans.woff2') format('woff2'),
+       url('../fonts/ptsans.woff') format('woff');
+  /*font-display: swap; это свойство сюда добавляется? оно вообще нужно?*/
+}
+
+/* pt-sans-700 - latin_cyrillic */
+@font-face {
+  font-family: 'PT Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('PT Sans Bold'), local('PTSans-Bold'),
+       url('../fonts/ptsansbold.woff2') format('woff2'),
+       url('../fonts/ptsansbold.woff') format('woff');
+}
+
 /* Variables */
 
 :root {
@@ -139,6 +162,10 @@ img {
   color: var(--basic-black-light);
 }
 
+.text-pre {
+  white-space: pre-line;
+}
+
 /*Visually-hidden*/
 
 .hidden {
@@ -181,14 +208,7 @@ img {
 
 .main-header-logo:focus {
   outline: none;
-/*  box-shadow: 0 0 0 3px var(--basic-blue);*/
-}
-
-.main-header-logo:focus path:first-child {
-  stroke: var(--basic-blue-hover);
-  stroke-width: 3px;
-  stroke-linecap: round;
-  stroke-linejoin: round; /*почему-то не работают?*/
+  box-shadow: 0 0 0 3px var(--basic-blue);
 }
 
 .site-nav {
@@ -297,7 +317,7 @@ img {
 }
 
 .advantages-title {
-  width: 151px;
+  width: 150px;
   margin: 0 auto;
   margin-bottom: 23px;
 }
@@ -402,6 +422,10 @@ img {
   width: 308px;
 }
 
+.search-date input[type="text"]::placeholder {
+  color: var(--basic-black);
+}
+
 .search-date input[type="text"]:hover {
   background-color: var(--basic-grey-hover);
 }
@@ -473,9 +497,14 @@ img {
   width: 38px;/*пришлось указать ширину блоков внутри, иначе по ровну не распределялись. Подскажи, как лучше?*/
 }
 
+.choose-block input[type="number"]:hover {
+  background-color: var(--basic-grey-hover);
+}
+
 .choose-block input[type="number"]:focus {
-  outline: 3px solid var(--basic-blue);
-  outline-offset: -3px;
+  background-color: var(--basic-white);
+  border: 2px solid var(--basic-form-border);
+  outline: none;
 }
 
 .choose-block .choose-button {
@@ -523,7 +552,7 @@ img {
   background-color: var(--basic-blue-light);
 }
 
-.choose-block input {
+.choose-block input {/*?*/
   text-align: right;
 }
 
@@ -545,6 +574,7 @@ img {
 .choose-block .choose-button {
   padding: 0;
   display: block;/*нужно?*/
+  background-color: var(--basic-grey-dark);
   border: none;
   cursor: pointer;
 }
@@ -772,7 +802,7 @@ img {
 }
 
 .filter-option {
-  margin-bottom: 27px;
+  margin-bottom: 25px;
   padding-left: 40px;
 }
 
@@ -798,8 +828,19 @@ img {
   top: 0;
   width: 23px;
   height: 23px;
-  border: 2px solid var(--basic-white);
-  border-radius: 15%;
+  background-image: url("../img/checkbox.svg");
+}
+
+.filter-input-checkbox:disabled + label::before {
+  background-image: url("../img/checkbox-disabled.svg");
+}
+
+.filter-input-checkbox:checked + label::before {
+  background-image: url("../img/checkbox-on.svg");
+}
+
+.filter-input-checkbox:checked:disabled + label::before {
+  background-image: url("../img/checkbox-on-disabled.svg");
 }
 
 .filter-input-checkbox:focus + label::before {
@@ -807,21 +848,16 @@ img {
   box-shadow: 0 0 0 3px var(--basic-blue);
 }
 
-.filter-input-checkbox:disabled + label::before {
-  border: 2px solid var(--basic-disabled);
-}
-
 .filter-input-checkbox:checked + label::after {
   content: "";
   position: absolute;
-  top: 2px;
+  top: 1px;
   left: -35px;
-  width: 23px;
-  height: 19px;
-/*  background-image: url("../img/ok.svg"); есть ещё варианты, как мне поменять цвет галочки?*/
+  width: 22px;
+  height: 17px;
   background-image: url("data:image/svg+xml,%3Csvg width='23' height='18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.29 6.49L.46 9.32l7.78 7.78L22.17 3.17 19.34.34l-11.1 11.1-4.95-4.95z' fill='%23fff'/%3E%3C/svg%3E%0A");
   background-repeat: no-repeat;
-  background-position: 0 0;
+  background-position: 0 0;/*эти свойства нужны здесь?*/
 }
 
 .filter-input-checkbox:checked:disabled + label::after {
@@ -937,14 +973,19 @@ img {
   left: 252px;
 }
 
+.filter-button {
+  padding-top: 25px;
+  padding-right: 11px;
+  width: 317px;/*нужно ли сюда высоту добавлять?*/
+}
+
 .filter-form-bitton {
   margin: 0 auto;
   margin-bottom: 32px;
-  margin-top: 24px;
-  padding: 6px 31px 6px 24px;
+  padding: 6px 27px;
   display: block;
-  width: 137px;
-  min-height: 36px;
+  min-width: 134px;
+  height: 35px;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
@@ -971,10 +1012,11 @@ img {
 .results {
   padding: 29px 73px 31px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .results-sort {
+  padding-top: 2px;
   display: flex;
 }
 
@@ -1008,7 +1050,7 @@ img {
 }
 
 .sort-list .sort-item {
-  margin-right: 32px;
+  margin-right: 34px;
 }
 
 .sort-list .sort-item:last-child {
@@ -1046,7 +1088,11 @@ img {
 }
 
 .results-nav .results-button {
-  margin-right: 8px;
+  margin-right: 6px;
+}
+
+.results-nav .results-button:last-child {
+  margin-right: 1px;
 }
 
 .results-button-active path {
