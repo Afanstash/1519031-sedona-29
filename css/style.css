@@ -181,7 +181,14 @@ img {
 
 .main-header-logo:focus {
   outline: none;
-  box-shadow: 0 0 0 3px var(--basic-blue);
+/*  box-shadow: 0 0 0 3px var(--basic-blue);*/
+}
+
+.main-header-logo:focus path:first-child {
+  stroke: var(--basic-blue-hover);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round; /*почему-то не работают?*/
 }
 
 .site-nav {
@@ -409,6 +416,7 @@ img {
   width: 38px;
   background-color: var(--basic-grey-dark);
   border: none;
+  cursor: pointer;
 }
 
 .calendar:hover path,
@@ -538,6 +546,7 @@ img {
   padding: 0;
   display: block;/*нужно?*/
   border: none;
+  cursor: pointer;
 }
 
 .form-search .search-button {/*у кнопок нужно учитывать преполнение текста? до куда он должен идти?*/
@@ -862,6 +871,7 @@ img {
   font-size: 14px;
   line-height: 21px;
   text-align: center;
+  cursor: pointer;
 }
 
 .price-controls input {
@@ -929,6 +939,8 @@ img {
 
 .filter-form-bitton {
   margin: 0 auto;
+  margin-bottom: 32px;
+  margin-top: 24px;
   padding: 6px 31px 6px 24px;
   display: block;
   width: 137px;
@@ -940,8 +952,7 @@ img {
   color: var(--basic-white);
   border: 2px solid var(--basic-white);
   background-color: transparent;
-  margin-bottom: 32px;
-  margin-top: 24px;
+  cursor: pointer;
 }
 
 .filter-form-bitton:hover,
