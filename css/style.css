@@ -43,7 +43,7 @@
   --basic-grey-dark: #F2F2F2;
   --basic-grey-hover: #EBEBEB;
   --basic-academy-active: #BDBBBC;
-  --basic-form-border: #E5E5E5;
+  --basic-border: #E5E5E5;
 
   --basic-black: #000000;
   --basic-black-light: #333333;
@@ -122,7 +122,6 @@ img {
 
 .advantage-two-img {
   grid-column: 1/3;
-  width: 100%;
   height: 100%;
   object-fit: cover;
 }
@@ -136,9 +135,7 @@ img {
 
 .inn-item img {
   grid-column: 1/2;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .inn-content {
@@ -282,7 +279,7 @@ img {
 /* About-sedona*/
 
 .about-sedona {
-  padding-top: 42.5px;
+  padding-top: 42px;
   text-align: center;
 }
 
@@ -290,7 +287,7 @@ img {
   margin: 0;/*Нужно для каждого заголовка и текста убирать, или можно в классах ".text" и ".title" прописать? как правильнее или как удобнее на практике?*/
   width: 500px;
   margin: 0 auto;
-  margin-bottom: 46px;
+  margin-bottom: 44px;
 }
 
 .sedona-content {
@@ -307,8 +304,7 @@ img {
   background-color: var(--basic-blue-light);
 }
 
-.advantage-one,
-.advantages-item {
+.advantage-one {
   padding-top: 42px;
 }
 
@@ -316,10 +312,14 @@ img {
   padding-top: 46px;
 }
 
+.advantages-item {
+  padding-top: 43px;
+}
+
 .advantages-title {
   width: 150px;
   margin: 0 auto;
-  margin-bottom: 23px;
+  margin-bottom: 20px;
 }
 
 .advantages-number {
@@ -330,7 +330,7 @@ img {
 
 .advantages-content {
   margin: 0 auto;
-  margin-bottom: 52px;
+  margin-bottom: 50px;
   width: 301px;
 }
 
@@ -347,22 +347,33 @@ img {
 .recommendations-list {
   margin: 0;
   padding: 0;
-  padding-top: 57px;
+}
+
+.recommendations-list .recommendations-item {
+  padding-top: 60px;
+}
+
+.recommendations-list .recommendations-item:last-child {
+  padding-top: 55px;
 }
 
 .recommendations-item img {
-  margin-bottom: 20px;
+  margin-bottom: 19px;
+}
+
+.recommendations-item:nth-child(2) img {
+  margin-bottom: 21px;
 }
 
 .recommendations-title {
   width: 151px;
   margin: 0 auto;
-  margin-bottom: 26px;
+  margin-bottom: 23px;
 }
 
 .recommendations-content {
   margin: 0 auto;
-  margin-bottom: 79px;
+  margin-bottom: 82px;
   width: 300px;
 }
 
@@ -432,7 +443,7 @@ img {
 
 .search-date input[type="text"]:focus {
   background-color: var(--basic-white);
-  border: 2px solid var(--basic-form-border);
+  border: 2px solid var(--basic-border);
   outline: none;
 }
 
@@ -503,7 +514,7 @@ img {
 
 .choose-block input[type="number"]:focus {
   background-color: var(--basic-white);
-  border: 2px solid var(--basic-form-border);
+  border: 2px solid var(--basic-border);
   outline: none;
 }
 
@@ -728,7 +739,7 @@ img {
   margin: 0 auto;
   display: flex;
   width: 197px;
-  height: 39px;
+  height: 36px;
   align-items: center;
   justify-content: space-between;
 }
@@ -755,6 +766,8 @@ img {
   min-height: 217px;
   background: var(--basic-filter) url(../img/background_sedona_2.jpg);
 }
+
+/* Grid */
 
 .filter-form {
   display: grid;
@@ -893,7 +906,12 @@ img {
   justify-content: space-between;
 }
 
+.price-controls .min-price {
+  padding-left: 41px;
+}
+
 .price-controls .max-price {
+  padding-left: 21px;
   border-left: 2px solid var(--basic-white);
 }
 
@@ -974,7 +992,7 @@ img {
 }
 
 .filter-button {
-  padding-top: 25px;
+  padding-top: 24px;
   padding-right: 11px;
   width: 317px;/*нужно ли сюда высоту добавлять?*/
 }
@@ -984,8 +1002,8 @@ img {
   margin-bottom: 32px;
   padding: 6px 27px;
   display: block;
-  min-width: 134px;
-  height: 35px;
+  min-width: 137px;
+  height: 36px;
   font-weight: 400;
   font-size: 14px;
   line-height: 21px;
@@ -1118,13 +1136,18 @@ img {
 
 .inn-list {
   margin: 0;
-  padding: 0 73px;
+  padding: 0;
 }
 
 .inn-item {
   margin: 0;
-  padding: 0;
-  padding-bottom: 31px;
+  padding: 0 73px;
+  padding-bottom: 30px;
+  border-top: 1px solid var(--basic-border);
+}
+
+.inn-item:last-child {
+  border-bottom: 1px solid var(--basic-border);
 }
 
 .inn-item .inn-img {
@@ -1142,7 +1165,7 @@ img {
 
 .inn-content .title {
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .inn-content .inn-blocks {
@@ -1151,7 +1174,7 @@ img {
 
 .inn-blocks .text {
   margin: 0;
-  margin-bottom: 14px;
+  margin-bottom: 15px;
 }
 
 .inn-blocks .inn-block:first-child {
@@ -1180,7 +1203,7 @@ img {
 .star-list {
   margin: 0;
   padding: 0;
-  padding-bottom: 42px;
+  padding-bottom: 40px;
   display: flex;
   justify-content: flex-end;
 }
@@ -1195,7 +1218,7 @@ img {
 
 .inn-rating {
   margin: 0;
-  padding: 4px 12px;
+  padding: 3px 13px;
   color: var(--basic-black-rating);
   background-color: var(--basic-grey-dark);
 }
