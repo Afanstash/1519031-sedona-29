@@ -8,7 +8,7 @@
   src: local('PT Sans'), local('PTSans-Regular'),
        url('../fonts/ptsans.woff2') format('woff2'),
        url('../fonts/ptsans.woff') format('woff');
-  /*font-display: swap; это свойство сюда добавляется? оно вообще нужно?*/
+  font-display: swap;
 }
 
 /* pt-sans-700 - latin_cyrillic */
@@ -19,6 +19,7 @@
   src: local('PT Sans Bold'), local('PTSans-Bold'),
        url('../fonts/ptsansbold.woff2') format('woff2'),
        url('../fonts/ptsansbold.woff') format('woff');
+  font-display: swap;
 }
 
 /* Variables */
@@ -130,7 +131,6 @@ img {
   display: grid;
   grid-template-columns: auto 1fr auto;
   grid-template-rows: auto;
-  min-height: min-content; /*может лучше в px задать?*/
 }
 
 .inn-item img {
@@ -167,8 +167,8 @@ img {
 
 .hidden {
   position: absolute;
-  overflow: hidden;/*нужно ли это свойство?*/
-  clip: rect(0 0 0 0);/*посмотреть примеры*/
+  overflow: hidden;
+  clip: rect(0 0 0 0);
   width: 1px;
   height: 1px;
   margin: -1px;
@@ -260,13 +260,13 @@ img {
 .welcome {
   height: 509px;
   padding-top: 77.35px;
-  background: var(--basic-welcome) url(../img/background_sedona.jpg);
+  background: var(--basic-welcome) url("../img/background_sedona.jpg");
   text-align: center;
   position: relative;
 }
 
 .welcome-img {
-  width: 457px;/*width, height зачем мы их здесь дублируем?*/
+  width: 457px;
   height: 351px;
 }
 
@@ -284,10 +284,8 @@ img {
 }
 
 .sedona-title {
-  margin: 0;/*Нужно для каждого заголовка и текста убирать, или можно в классах ".text" и ".title" прописать? как правильнее или как удобнее на практике?*/
+  margin: 0 auto 44px;
   width: 500px;
-  margin: 0 auto;
-  margin-bottom: 44px;
 }
 
 .sedona-content {
@@ -425,7 +423,7 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   background-color: var(--basic-grey-dark);
-  border: none;
+  border: 2px solid transparent;
 }
 
 .search-date input[type="text"] {
@@ -505,7 +503,7 @@ img {
 
 .choose-block input[type="number"],
 .choose-block .choose-button {
-  width: 38px;/*пришлось указать ширину блоков внутри, иначе по ровну не распределялись. Подскажи, как лучше?*/
+  width: 38px;
 }
 
 .choose-block input[type="number"]:hover {
@@ -584,19 +582,19 @@ img {
 /* index form Button */
 .choose-block .choose-button {
   padding: 0;
-  display: block;/*нужно?*/
+  display: block;
   background-color: var(--basic-grey-dark);
   border: none;
   cursor: pointer;
 }
 
-.form-search .search-button {/*у кнопок нужно учитывать преполнение текста? до куда он должен идти?*/
+.form-search .search-button {
   padding: 0;
   padding-top: 16px;
   padding-bottom: 16px;
   display: block;
   width: 458px;
-  min-height: 58px;
+  min-height: 58px;/*нужно задавать?*/
   border: 0;
 }
 
@@ -689,7 +687,7 @@ img {
 
 .main-footer {
   position: relative;
-  margin-top: -120px;/*Покажи универсальный способ позиционироания футера поверх карты,пожалуйста)*/
+  margin-top: -120px;
 }
 
 .footer-contacts {
@@ -764,7 +762,7 @@ img {
 .filter {
   padding: 25px 72px 0 72px;
   min-height: 217px;
-  background: var(--basic-filter) url(../img/background_sedona_2.jpg);
+  background: var(--basic-filter) url("../img/background_sedona_2.jpg");
 }
 
 /* Grid */
@@ -785,7 +783,8 @@ img {
   grid-row: 1/-1;
 }
 
-.filter-price {/*на строчке ниже есть этот же класс*/
+.filter-price {
+  margin: 0;
   grid-column: 3/-1;
   grid-row: 1/2;
 }
@@ -842,6 +841,8 @@ img {
   width: 23px;
   height: 23px;
   background-image: url("../img/checkbox.svg");
+  background-repeat: no-repeat;
+  background-position: 0 0;
 }
 
 .filter-input-checkbox:disabled + label::before {
@@ -870,17 +871,14 @@ img {
   height: 17px;
   background-image: url("data:image/svg+xml,%3Csvg width='23' height='18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.29 6.49L.46 9.32l7.78 7.78L22.17 3.17 19.34.34l-11.1 11.1-4.95-4.95z' fill='%23fff'/%3E%3C/svg%3E%0A");
   background-repeat: no-repeat;
-  background-position: 0 0;/*эти свойства нужны здесь?*/
+  background-position: 0 0;
 }
 
 .filter-input-checkbox:checked:disabled + label::after {
   background-image: url("data:image/svg+xml,%3Csvg width='23' height='18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.28 6.49L.46 9.32l7.78 7.78L22.17 3.17 19.34.34l-11.1 11.1-4.96-4.95z' fill='%236A6A6A'/%3E%3C/svg%3E");
- /* background-repeat: no-repeat;
-  background-position: 0 0;вот эти свойства нужны здесь?*/
 }
 
 .filter-price {
-  width: 317px;/*нужно задавать?*/
   margin: 0;
 }
 
@@ -941,7 +939,7 @@ img {
 }
 
 .range-controls {
-  position: relative;/*нужно ли задавать этому блоку параметры высоты и ширины?*/
+  position: relative;
 }
 
 .range-controls .scale {
@@ -994,7 +992,7 @@ img {
 .filter-button {
   padding-top: 24px;
   padding-right: 11px;
-  width: 317px;/*нужно ли сюда высоту добавлять?*/
+  width: 317px;
 }
 
 .filter-form-bitton {
@@ -1122,7 +1120,7 @@ img {
   fill: var(--basic-black);
 }
 
-.results-button:focus {/*почему не работает?*/
+.results-button:focus {
   outline: none;
   box-shadow: 0 0 0 3px var(--basic-blue);
 }
