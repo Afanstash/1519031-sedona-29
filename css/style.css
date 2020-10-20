@@ -168,6 +168,7 @@ img {
 .hidden {
   position: absolute;
   overflow: hidden;
+  white-space: nowrap;
   clip: rect(0 0 0 0);
   width: 1px;
   height: 1px;
@@ -209,27 +210,29 @@ img {
 }
 
 .site-nav {
-  padding: 15px 72px;
+  padding: 15px 0px;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
 }
 
 .nav-item {
-/*  width: 100px;*/
+  width: calc(1200px/4);
   line-height: 26px;
   font-weight: 700;
-  text-align: center;
 }
 
-.nav-item:nth-child(2) {
-  margin-right: auto;
-  margin-left: 133px;
+.nav-item:first-child {
+  padding-left: 72px;
 }
 
-.nav-item:nth-child(3) {
-  margin-left: auto;
-  margin-right: 147px;
+.nav-item:nth-child(4n) {
+  padding-right: 72px;
+}
+
+.nav-item:nth-child(3n),
+.nav-item:nth-child(4n) {
+  text-align: right;
 }
 
 .nav-item a {
@@ -260,7 +263,7 @@ img {
 .welcome {
   height: 509px;
   padding-top: 77.35px;
-  background: var(--basic-welcome) url("../img/background_sedona.jpg");
+  background: var(--basic-welcome) url("../img/background-sedona.jpg");
   text-align: center;
   position: relative;
 }
@@ -561,8 +564,12 @@ img {
   background-color: var(--basic-blue-light);
 }
 
-.choose-block input {/*?*/
+.choose-block input {
   text-align: right;
+}
+
+.map iframe {
+  border: none;
 }
 
 /* Button */
@@ -594,7 +601,6 @@ img {
   padding-bottom: 16px;
   display: block;
   width: 458px;
-  min-height: 58px;/*нужно задавать?*/
   border: 0;
 }
 
@@ -654,6 +660,10 @@ img {
   opacity: 0.3;
 }
 
+.button-blue:active img {
+  opacity: 0.3;
+}
+
 .button-brown {
   text-align: center;
   text-transform: inherit;
@@ -691,8 +701,13 @@ img {
 }
 
 .footer-contacts {
-  padding-top: 23px;
   padding-left: 73px;
+  padding-top: 23px;
+}
+
+.contacts-content{
+  margin: 0;
+  margin-bottom: 9px;
 }
 
 .footer-contacts .contacts-phone:focus {
@@ -700,13 +715,18 @@ img {
   box-shadow: 0 0 0 3px var(--basic-blue);
 }
 
+.contacts-phone,
+.copyright-link {
+  color: inherit;
+}
+
 .footer-social {
   margin: 0;
-  padding: 34px 125px 30px;
+  padding: 34px 0 30px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .social-item {
@@ -718,28 +738,19 @@ img {
   margin-right: 0;
 }
 
-.contacts-content{
-  margin: 0;
-  margin-bottom: 9px;
-}
-.contacts-phone,
-.copyright-link {
-  color: inherit;
-}
-
 .footer-copyright {
   margin: 0;
+  padding-top: 35px;
   padding-right: 73px;
-  padding-top: 41px;
+  padding-bottom: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .copyright-link {
-  margin: 0 auto;
-  display: flex;
-  width: 197px;
-  height: 36px;
-  align-items: center;
-  justify-content: space-between;
+/*  width: 197px; убрать?*/
+  margin-left: 10px;
 }
 
 .copyright-link:hover path,
@@ -762,7 +773,7 @@ img {
 .filter {
   padding: 25px 72px 0 72px;
   min-height: 217px;
-  background: var(--basic-filter) url("../img/background_sedona_2.jpg");
+  background: var(--basic-filter) url("../img/background-sedona-2.jpg");
 }
 
 /* Grid */
@@ -1223,6 +1234,10 @@ img {
 
 /* for JS */
 
+.modal-hidden {
+  display: none;
+}
+
 /* Animations */
 
 @keyframes bounce {
@@ -1263,16 +1278,6 @@ img {
   80% {
     transform: translateX(10px);
   }
-}
-
-.modal-hidden {
-  display: none;
-}
-
-.modal-show {/*убрать, усли не нужен*/
-  display: block;
-  animation-name: bounce;
-  animation-duration: 0.6s;
 }
 
 .modal-animation {
