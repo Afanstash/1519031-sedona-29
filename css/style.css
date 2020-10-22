@@ -306,8 +306,7 @@ img {
 }
 
 .sedona-content {
-  margin: 0 auto;
-  margin-bottom: 52px;
+  margin: 0 auto 52px;
   width: 500px;
   line-height: 26px;
 }
@@ -334,14 +333,12 @@ img {
 .advantages-title,
 .recommendations-title {
   width: 150px;
-  margin: 0 auto;
-  margin-bottom: 26px;
+  margin: 0 auto 26px;
   line-height: 21px;
 }
 
 .advantages-number {
-  margin: 0 auto;
-  margin-bottom: 23px;
+  margin: 0 auto 23px;
   width: 160px;
 }
 
@@ -354,8 +351,7 @@ img {
 }
 
 .advantages-content {
-  margin: 0 auto;
-  margin-bottom: 50px;
+  margin: 0 auto 50px;
   width: 301px;
 }
 
@@ -395,8 +391,7 @@ img {
 }
 
 .recommendations-content {
-  margin: 0 auto;
-  margin-bottom: 82px;
+  margin: 0 auto 82px;
   width: 300px;
 }
 
@@ -1275,36 +1270,18 @@ img {
 /* Animations */
 
 @-webkit-keyframes bounce {
-  0% {/*объединить со 100%*/
-    transform: translateY(-300px);
+  0% {
+    transform: translateY(-395px);
   }
-
-/*  70% {
-    transform: translateY(-100px);
-  }
-
-  90% {
-    transform: translateY(-20px);
-  }*/
-
   100% {
     transform: translateY(0);
   }
 }
 
 @keyframes bounce {
-  0% {/*объединить со 100%*/
-    transform: translateY(-300px);
+  0% {
+    transform: translateY(-395px);
   }
-
-/*  70% {
-    transform: translateY(-100px);
-  }
-
-  90% {
-    transform: translateY(-20px);
-  }*/
-
   100% {
     transform: translateY(0);
   }
