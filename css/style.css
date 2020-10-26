@@ -418,6 +418,7 @@ img {
 .map {
   position: relative;
   height: 594px;
+  background: var(--basic-grey-dark) url("../img/map.jpg") no-repeat;
 }
 
 .form-search {
