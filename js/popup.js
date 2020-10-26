@@ -13,6 +13,7 @@ popup.classList.add("modal-hidden");
 
 link.addEventListener("click", function (evt) {
   evt.preventDefault();
+  popup.classList.remove("modal-error");
   popup.classList.toggle("modal-hidden");
   popup.classList.toggle("modal-animation");
   day_in.focus();
